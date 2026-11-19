@@ -12,5 +12,5 @@ text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif}
 </style><rect width="840" height="200" rx="14" fill="#0d1117" stroke="#30363d"/><defs><linearGradient id="sh" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="200" y2="0"><stop offset="0" stop-color="#e6edf3"/><stop offset=".5" stop-color="#6c8cff"/><stop offset="1" stop-color="#e6edf3"/><animateTransform attributeName="gradientTransform" type="translate" from="-200 0" to="700 0" dur="3.5s" begin="1s" repeatCount="indefinite"/></linearGradient></defs>
 <circle cx="760" cy="40" r="120" fill="#6c8cff" fill-opacity=".08"/>
 <text class="a" x="40" y="70" font-size="14" fill="#6c8cff" letter-spacing="3" style="animation-delay:.1s">BONJOUR, JE SUIS</text>
-<text class="a" x="40" y="130" font-size="58" font-weight="700" fill="url(#sh)" style="animation-delay:.3s">Maxxes</text>
+<text class="a" x="40" y="130" font-size="58" font-weight="700" fill="url(#sh)" style="animation-delay:.3s">M4xxes</text>
 <text class="a" x="40" y="168" font-size="18" fill="#8b949e" style="animation-delay:.6s">Dev / Prog · Étudiant à Ynov Campus, Lyon</text></svg>

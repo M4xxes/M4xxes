@@ -3,8 +3,8 @@
 import json, os, re, urllib.request
 from html import escape
 
-USER = "Maxxes0"
-NAME = "Maxxes"
+USER = "M4xxes"
+NAME = "M4xxes"
 BIO = "Dev / Prog · Étudiant à Ynov Campus, Lyon"
 ACCENT, BG, FG, MUTED, CARD = "#6c8cff", "#0d1117", "#e6edf3", "#8b949e", "#161b22"
 FONT = "-apple-system,'Segoe UI',Helvetica,Arial,sans-serif"
@@ -83,7 +83,7 @@ def contributions():
 
 # ---------- repos
 def repos():
-    data = json.loads(get(f"https://api.github.com/users/{USER}/repos?sort=updated&per_page=6") or "[]")
+    data = json.loads(get(f"https://api.github.com/users/{USER}/repos?sort=updated&per_page=10") or "[]")
     data = [r for r in data if not r["fork"]][:4]
     for i, r in enumerate(data):
         desc = r["description"] or "Pas de description"
