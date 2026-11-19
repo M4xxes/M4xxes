@@ -55,31 +55,19 @@ def tile(name, title, sub, icon, delay):
 <text x="24" y="116" font-size="13" fill="{MUTED}">{escape(sub)}</text></g>'''
     svg(270, 140, body, name)
 
-# ---------- contributions
+# ---------- graphe décoratif plein (motif animé, pas de vraies données)
 def contributions():
-    html = get(f"https://github.com/users/{USER}/contributions")
-    days = re.findall(r'data-date="(\d{4}-\d{2}-\d{2})"[^>]*?data-level="(\d)"', html) or \
-           [(d, l) for l, d in re.findall(r'data-level="(\d)"[^>]*?data-date="(\d{4}-\d{2}-\d{2})"', html)]
-    days = sorted(days)
-    if not days:
-        days = [(f"d{i}", "0") for i in range(371)]
-    cols = ["#161b22", "#1c2a5a", "#2f4aa8", "#4a6ae0", ACCENT]
-    cell, gap = 11, 3
-    body = f'<text class="a" x="24" y="34" font-size="16" font-weight="600" fill="{FG}">Contributions</text>'
-    # pad to start on sunday
-    first = 0
-    try:
-        import datetime
-        first = (datetime.date.fromisoformat(days[0][0]).weekday() + 1) % 7
-    except Exception: pass
-    for i, (_, lvl) in enumerate(days):
-        idx = i + first
-        x, y = 24 + (idx // 7) * (cell + gap), 52 + (idx % 7) * (cell + gap)
-        delay = (idx // 7) * 0.025 + 0.3
-        body += f'<rect class="p" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" fill="{cols[int(lvl)]}" style="animation-delay:{delay:.2f}s"/>'
-    total = sum(1 for _, l in days if l != "0")
-    body += f'<text x="24" y="170" font-size="12" fill="{MUTED}">{total} jours actifs sur la dernière année</text>'
-    svg(840, 190, body, "activity.svg")
+    import math
+    cols = ["#1c2a5a", "#2f4aa8", "#4a6ae0", ACCENT, "#a9bbff"]
+    cell, gap, ncols = 12, 3, 53
+    body = f'<text class="a" x="24" y="34" font-size="16" font-weight="600" fill="{FG}">Activité</text>'
+    for c in range(ncols):
+        for r in range(7):
+            v = (math.sin(c * 0.35) + math.cos(r * 0.9 + c * 0.2) + 2) / 4
+            lvl = min(4, int(v * 5))
+            x, y = 24 + c * (cell + gap), 52 + r * (cell + gap)
+            body += f'<rect class="p" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" fill="{cols[lvl]}" style="animation-delay:{0.3 + c * 0.03 + r * 0.02:.2f}s"/>'
+    svg(840, 170, body, "activity.svg")
 
 # ---------- repos
 def repos():
